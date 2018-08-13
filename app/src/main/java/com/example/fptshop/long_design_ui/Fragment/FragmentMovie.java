@@ -60,8 +60,6 @@ public class FragmentMovie extends Fragment {
         newFeedLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         newFeedRecyclerview.setLayoutManager(newFeedLayoutManager);
         Context context = getContext();
-        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(context,newFeedLayoutManager.getOrientation());
-        newFeedRecyclerview.addItemDecoration(dividerItemDecoration);
         newFeedRecyclerview.setAdapter(newFeedadapter);
 
 
