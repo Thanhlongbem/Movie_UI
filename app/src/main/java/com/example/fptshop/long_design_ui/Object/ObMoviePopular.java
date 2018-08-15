@@ -1,48 +1,87 @@
 package com.example.fptshop.long_design_ui.Object;
 
 public class ObMoviePopular {
-    private int imgFigure1;
-    private int imgFigure2;
-    private int imgFigure3;
-    private int imgFigure4;
+    private int imgPopular1;
+    private String nameMoviePopular1;
+    private int imgPopular2;
+    private String nameMoviePopular2;
+    private int imgPopular3;
+    private String nameMoviePopular3;
+    private int imgPopular4;
+    private String nameMoviePopular4;
 
-    public ObMoviePopular(int imgFigure1, int imgFigure2, int imgFigure3, int imgFigure4) {
-        this.imgFigure1 = imgFigure1;
-        this.imgFigure2 = imgFigure2;
-        this.imgFigure3 = imgFigure3;
-        this.imgFigure4 = imgFigure4;
+    public ObMoviePopular(int imgPopular1, String nameMoviePopular1, int imgPopular2, String nameMoviePopular2, int imgPopular3, String nameMoviePopular3, int imgPopular4, String nameMoviePopular4) {
+        this.imgPopular1 = imgPopular1;
+        this.nameMoviePopular1 = nameMoviePopular1;
+        this.imgPopular2 = imgPopular2;
+        this.nameMoviePopular2 = nameMoviePopular2;
+        this.imgPopular3 = imgPopular3;
+        this.nameMoviePopular3 = nameMoviePopular3;
+        this.imgPopular4 = imgPopular4;
+        this.nameMoviePopular4 = nameMoviePopular4;
     }
 
-
-    public int getImgFigure1() {
-        return imgFigure1;
+    public int getImgPopular1() {
+        return imgPopular1;
     }
 
-    public void setImgFigure1(int imgFigure1) {
-        this.imgFigure1 = imgFigure1;
+    public void setImgPopular1(int imgPopular1) {
+        this.imgPopular1 = imgPopular1;
     }
 
-    public int getImgFigure2() {
-        return imgFigure2;
+    public String getNameMoviePopular1() {
+        return nameMoviePopular1;
     }
 
-    public void setImgFigure2(int imgFigure2) {
-        this.imgFigure2 = imgFigure2;
+    public void setNameMoviePopular1(String nameMoviePopular1) {
+        this.nameMoviePopular1 = nameMoviePopular1;
     }
 
-    public int getImgFigure3() {
-        return imgFigure3;
+    public int getImgPopular2() {
+        return imgPopular2;
     }
 
-    public void setImgFigure3(int imgFigure3) {
-        this.imgFigure3 = imgFigure3;
+    public void setImgPopular2(int imgPopular2) {
+        this.imgPopular2 = imgPopular2;
     }
 
-    public int getImgFigure4() {
-        return imgFigure4;
+    public String getNameMoviePopular2() {
+        return nameMoviePopular2;
     }
 
-    public void setImgFigure4(int imgFigure4) {
-        this.imgFigure4 = imgFigure4;
+    public void setNameMoviePopular2(String nameMoviePopular2) {
+        this.nameMoviePopular2 = nameMoviePopular2;
+    }
+
+    public int getImgPopular3() {
+        return imgPopular3;
+    }
+
+    public void setImgPopular3(int imgPopular3) {
+        this.imgPopular3 = imgPopular3;
+    }
+
+    public String getNameMoviePopular3() {
+        return nameMoviePopular3;
+    }
+
+    public void setNameMoviePopular3(String nameMoviePopular3) {
+        this.nameMoviePopular3 = nameMoviePopular3;
+    }
+
+    public int getImgPopular4() {
+        return imgPopular4;
+    }
+
+    public void setImgPopular4(int imgPopular4) {
+        this.imgPopular4 = imgPopular4;
+    }
+
+    public String getNameMoviePopular4() {
+        return nameMoviePopular4;
+    }
+
+    public void setNameMoviePopular4(String nameMoviePopular4) {
+        this.nameMoviePopular4 = nameMoviePopular4;
     }
 }

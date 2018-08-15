@@ -3,7 +3,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:background="@drawable/bc6">
 
 
     <android.support.v4.widget.NestedScrollView
@@ -25,25 +26,84 @@
                 android:id="@+id/recyclerviewNewFeed">
             </android.support.v7.widget.RecyclerView>
 
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:gravity="center"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="NOW"
-                android:textStyle="bold" />
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_marginLeft="5dp"
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/line1"
+                    />
+                <TextView
+                    android:layout_marginLeft="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="HOT MOVIE"
+                    android:textSize="15dp"
+                    android:textColor="#ffffff"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:layout_marginLeft="5dp"
+                    android:layout_width="145dp"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/line1" />
+
+
+            </LinearLayout>
+
+
+
 
             <android.support.v7.widget.RecyclerView
+                android:layout_marginTop="3dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/recyclerviewNow">
             </android.support.v7.widget.RecyclerView>
 
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:gravity="center"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="POPULAR"
-                android:textStyle="bold" />
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_marginTop="5dp"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/line1"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:text="POPULAR"
+                    android:textColor="#ffffff"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_width="145dp"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/line1"
+                    />
+
+            </LinearLayout>
+
+
+
 
             <android.support.v7.widget.RecyclerView
+                android:layout_marginTop="3dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/recyclerviewPopular">

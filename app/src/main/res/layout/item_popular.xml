@@ -9,39 +9,107 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-        
-        <ImageView
-            android:id="@+id/imgPopular1"
-            android:layout_width="170dp"
-            android:layout_height="180dp"/>
 
-        <ImageView
-            android:id="@+id/imgPopular2"
-            android:layout_width="170dp"
-            android:layout_height="180dp"
+
+
+        <RelativeLayout
+            android:layout_width="180dp"
+            android:layout_height="200dp">
+
+            <ImageView
+                android:id="@+id/imgPopular1"
+                android:layout_width="180dp"
+                android:layout_height="180dp"/>
+
+            <TextView
+                android:textColor="#ffffff"
+                android:id="@+id/nameMoviePopular1"
+                android:layout_width="180dp"
+                android:layout_height="20dp"
+                android:textSize="12dp"
+                android:gravity="center"
+                android:layout_below="@+id/imgPopular1"/>
+        </RelativeLayout>
+
+
+        <RelativeLayout
             android:layout_marginLeft="4dp"
-            />
+            android:layout_width="180dp"
+            android:layout_height="200dp">
+
+            <ImageView
+                android:id="@+id/imgPopular2"
+                android:layout_width="180dp"
+                android:layout_height="180dp"/>
+
+            <TextView
+                android:textColor="#ffffff"
+                android:id="@+id/nameMoviePopular2"
+                android:layout_width="180dp"
+                android:layout_height="20dp"
+                android:textSize="12dp"
+                android:gravity="center"
+                android:layout_below="@+id/imgPopular2"/>
+        </RelativeLayout>
+
+
     </LinearLayout>
 
     <LinearLayout
-        android:layout_marginTop="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginTop="4dp">
 
-        <ImageView
-            android:id="@+id/imgPopular3"
-            android:layout_width="170dp"
-            android:layout_height="180dp"/>
 
-        <ImageView
-            android:id="@+id/imgPopular4"
-            android:layout_width="170dp"
-            android:layout_height="180dp"
+
+        <RelativeLayout
+            android:layout_width="180dp"
+            android:layout_height="200dp">
+
+            <ImageView
+                android:id="@+id/imgPopular3"
+                android:layout_width="180dp"
+                android:layout_height="180dp"/>
+
+            <TextView
+                android:textColor="#ffffff"
+                android:id="@+id/nameMoviePopular3"
+                android:layout_width="180dp"
+                android:layout_height="20dp"
+                android:textSize="12dp"
+                android:gravity="center"
+                android:layout_below="@+id/imgPopular3"/>
+        </RelativeLayout>
+
+
+        <RelativeLayout
             android:layout_marginLeft="4dp"
-            />
+            android:layout_width="180dp"
+            android:layout_height="200dp">
+
+            <ImageView
+                android:id="@+id/imgPopular4"
+                android:layout_width="180dp"
+                android:layout_height="180dp"/>
+
+            <TextView
+                android:textColor="#ffffff"
+                android:id="@+id/nameMoviePopular4"
+                android:layout_width="180dp"
+                android:layout_height="20dp"
+                android:textSize="12dp"
+                android:gravity="center"
+                android:layout_below="@+id/imgPopular4"/>
+        </RelativeLayout>
+
 
     </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:src="@drawable/line2"/>
 
 
 </LinearLayout>
