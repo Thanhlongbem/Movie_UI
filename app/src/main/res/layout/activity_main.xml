@@ -6,15 +6,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main_content"
     >
-
-
     <android.support.design.widget.AppBarLayout
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         android:fitsSystemWindows="true"
         android:layout_height="50dp">
-
         <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/collapsing_toolbar"
             android:layout_width="match_parent"
@@ -23,57 +20,46 @@
             app:contentScrim="?attr/colorPrimary"
             app:expandedTitleMarginStart="48dp"
             app:expandedTitleMarginEnd="64dp"
-            android:fitsSystemWindows="true">
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:orientation="horizontal"
-                app:layout_collapseMode="parallax"
-                android:background="@drawable/bc4">
-
-                <EditText
-                    android:id="@+id/edtSearchActivity"
-                    android:layout_width="310dp"
-                    android:layout_height="wrap_content"
-                    android:text="Search movie"
-                    android:textSize="20dp"/>
-
-
-
-                <Button
-                    android:id="@+id/btSearch"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:background="@drawable/ic_search"
-                    />
-
-            </LinearLayout>
+            android:fitsSystemWindows="true"
+            >
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                app:layout_collapseMode="pin">
+                app:layout_collapseMode="pin"
+                android:background="@drawable/bc4">
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal"
+                    app:layout_collapseMode="parallax"
+                    >
+                    <EditText
+                        android:id="@+id/edtSearchActivity"
+                        android:layout_width="310dp"
+                        android:layout_height="wrap_content"
+                        android:hint="Search movie"
+                        android:textSize="20dp"/>
+                    <Button
+                        android:id="@+id/btSearch"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/ic_search"
+                        />
+                </LinearLayout>
             </android.support.v7.widget.Toolbar>
 
         </android.support.design.widget.CollapsingToolbarLayout>
-
-
     </android.support.design.widget.AppBarLayout>
-
-
     <android.support.v4.view.ViewPager
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         android:id="@+id/viewpager_id">
     </android.support.v4.view.ViewPager>
-
-
     <android.support.design.widget.TabLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -84,8 +70,6 @@
         android:layout_gravity="bottom"
         android:id="@+id/tablayout_id">
     </android.support.design.widget.TabLayout>
-
-
 </android.support.design.widget.CoordinatorLayout>
 
 

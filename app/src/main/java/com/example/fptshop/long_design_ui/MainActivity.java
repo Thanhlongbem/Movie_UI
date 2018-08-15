@@ -44,15 +44,9 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.setupWithViewPager(viewPager);
 
 
-        appBarLayout = findViewById(R.id.app_bar);
+        btSearch = findViewById(R.id.btSearch);
 
-        appBarLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                intent = new Intent(MainActivity.this, SearchActivity.class);
-                startActivity(intent);
-            }
-        });
+        searchClick();
 
     }
 
