@@ -9,19 +9,10 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <ImageView
-            android:src="@drawable/now2"
-            android:id="@+id/imgAllHotMovie"
+        <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"
-            android:layout_height="180dp" />
-        <TextView
-            android:gravity="center"
-            android:text="Nhiệm vụ bất khả thi: Sụp đổ"
-            android:textSize="12dp"
-            android:textStyle="bold"
-            android:id="@+id/tvAllHotMovie"
-            android:layout_width="match_parent"
-            android:layout_height="20dp"/>
+            android:layout_height="match_parent">
+        </android.support.v7.widget.RecyclerView>
 
     </LinearLayout>
 

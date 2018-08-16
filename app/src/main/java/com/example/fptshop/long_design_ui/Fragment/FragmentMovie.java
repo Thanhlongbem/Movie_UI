@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import com.example.fptshop.long_design_ui.Adapter.NewFeedMovieRecyclerviewAdapter;
 import com.example.fptshop.long_design_ui.Adapter.HotMovieMovieRecyclerviewAdapter;
 import com.example.fptshop.long_design_ui.Adapter.PopularMovieRecyclerviewAdapter;
+import com.example.fptshop.long_design_ui.Object.ObMovie;
 import com.example.fptshop.long_design_ui.Object.ObMovieHotMovie;
 import com.example.fptshop.long_design_ui.Object.ObMovieNewFeed;
 import com.example.fptshop.long_design_ui.Object.ObMoviePopular;
@@ -35,6 +36,7 @@ public class FragmentMovie extends Fragment {
     private List<ObMovieNewFeed> lstObMovieNewFeed;
     private List<ObMovieHotMovie> lstObMovieHotMovie;
     private List<ObMoviePopular> lstObMoviePopular;
+    private ArrayList<ObMovie> lstMovie;
 
     CollapsingToolbarLayout collapsingToolbarLayout;
     Toolbar toolbar;
@@ -105,6 +107,7 @@ public class FragmentMovie extends Fragment {
 
     public void newFeedData(){
         lstObMovieNewFeed = new ArrayList<>();
+        // Load from server
         lstObMovieNewFeed.add(new ObMovieNewFeed(R.drawable.tt1));
         lstObMovieNewFeed.add(new ObMovieNewFeed(R.drawable.tt2));
         lstObMovieNewFeed.add(new ObMovieNewFeed(R.drawable.tt3));
@@ -113,6 +116,7 @@ public class FragmentMovie extends Fragment {
 
     public void hotMovieInitData(){
         lstObMovieHotMovie = new ArrayList<>();
+        // Load from server
         lstObMovieHotMovie.add(new ObMovieHotMovie(R.drawable.now1,"Cá mập siêu bạo chúa"));
         lstObMovieHotMovie.add(new ObMovieHotMovie(R.drawable.now2,"Nhiệm vụ bất khả thi: Sụp đổ"));
         lstObMovieHotMovie.add(new ObMovieHotMovie(R.drawable.now3,"Christopher Robin"));
@@ -120,14 +124,47 @@ public class FragmentMovie extends Fragment {
         lstObMovieHotMovie.add(new ObMovieHotMovie(R.drawable.now5, "Bạn trai cũ tôi là điệp viên"));
         lstObMovieHotMovie.add(new ObMovieHotMovie(R.drawable.now6, "Mirai: Em gái đến từ tương lai"));
         lstObMovieHotMovie.add(new ObMovieHotMovie(R.drawable.now7, "Gia đình là tất cả"));
+
+        // Add fix more item
         lstObMovieHotMovie.add(new ObMovieHotMovie(R.drawable.imagemore, ""));
 
     }
 
     public void popularInitData(){
         lstObMoviePopular = new ArrayList<>();
-        lstObMoviePopular.add(new ObMoviePopular(R.drawable.pp1, "Tòa tháp trọc trời", R.drawable.pp2,"ET Cậu bé ngoài hành tinh", R.drawable.pp3,"Trùm bài", R.drawable.pp4,"Trừng phạt tội ác"));
-        lstObMoviePopular.add(new ObMoviePopular(R.drawable.pp5,"Trả thù", R.drawable.pp6, "Tiên tri ngày tận thế", R.drawable.pp7,"Sát thủ thợ máy: Sự tái xuất", R.drawable.pp8,"Gia đình cá mập"));
+
+        /*
+        lstMovie.add(new ObMovie(R.drawable.pp1, "Tòa tháp trọc trời"));
+        lstMovie.add(new ObMovie(R.drawable.pp2, "ET Cậu bé ngoài hành tinh"));
+        lstMovie.add(new ObMovie(R.drawable.pp3, "Trùm bài"));
+        lstMovie.add(new ObMovie(R.drawable.pp4, "Trừng phạt tội ác"));
+        lstMovie.add(new ObMovie(R.drawable.pp5, "Trả thù"));
+        lstMovie.add(new ObMovie(R.drawable.pp6, "Tiên tri ngày tận thế"));
+        lstMovie.add(new ObMovie(R.drawable.pp7, "Sát thủ thợ máy: Sự tái xuất"));
+
+        int size = lstMovie.size();
+
+        if(size % 2 ==0  ){
+            for(int i = 0; i<lstMovie.size(); i+=2){
+                lstObMoviePopular.add(new ObMoviePopular(lstMovie.get(i), lstMovie.get(i+1)));
+            }
+        }else {
+            for(int i =0;i<lstMovie.size() - 1;i+=2){
+                lstObMoviePopular.add(new ObMoviePopular(lstMovie.get(i), lstMovie.get(i+1)));
+            }
+            lstMovie.add(new ObMovie(R.drawable.imagemore, ""));
+            lstObMoviePopular.add(new ObMoviePopular(lstMovie.get(size - 2), lstMovie.get(size-1)));
+        }*/
+
+
+        lstObMoviePopular.add(new ObMoviePopular(R.drawable.pp1, "Tòa tháp trọc trời",R.drawable.pp2, "ET Cậu bé ngoài hành tinh"));
+        lstObMoviePopular.add(new ObMoviePopular(R.drawable.pp3, "Trùm bài",R.drawable.pp4, "Trừng phạt tội ác"));
+        lstObMoviePopular.add(new ObMoviePopular(R.drawable.pp5, "Trả thù",R.drawable.pp6, "Tiên tri ngày tận thế"));
+
+
+
+
+
     }
 
 

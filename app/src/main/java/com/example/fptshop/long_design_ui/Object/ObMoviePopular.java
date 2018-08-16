@@ -5,20 +5,15 @@ public class ObMoviePopular {
     private String nameMoviePopular1;
     private int imgPopular2;
     private String nameMoviePopular2;
-    private int imgPopular3;
-    private String nameMoviePopular3;
-    private int imgPopular4;
-    private String nameMoviePopular4;
 
-    public ObMoviePopular(int imgPopular1, String nameMoviePopular1, int imgPopular2, String nameMoviePopular2, int imgPopular3, String nameMoviePopular3, int imgPopular4, String nameMoviePopular4) {
+    public ObMoviePopular(int imgPopular1, String nameMoviePopular1, int imgPopular2, String nameMoviePopular2) {
         this.imgPopular1 = imgPopular1;
         this.nameMoviePopular1 = nameMoviePopular1;
         this.imgPopular2 = imgPopular2;
         this.nameMoviePopular2 = nameMoviePopular2;
-        this.imgPopular3 = imgPopular3;
-        this.nameMoviePopular3 = nameMoviePopular3;
-        this.imgPopular4 = imgPopular4;
-        this.nameMoviePopular4 = nameMoviePopular4;
+    }
+
+    public ObMoviePopular(ObMovie obMovie, ObMovie obMovie1) {
     }
 
     public int getImgPopular1() {
@@ -51,37 +46,5 @@ public class ObMoviePopular {
 
     public void setNameMoviePopular2(String nameMoviePopular2) {
         this.nameMoviePopular2 = nameMoviePopular2;
-    }
-
-    public int getImgPopular3() {
-        return imgPopular3;
-    }
-
-    public void setImgPopular3(int imgPopular3) {
-        this.imgPopular3 = imgPopular3;
-    }
-
-    public String getNameMoviePopular3() {
-        return nameMoviePopular3;
-    }
-
-    public void setNameMoviePopular3(String nameMoviePopular3) {
-        this.nameMoviePopular3 = nameMoviePopular3;
-    }
-
-    public int getImgPopular4() {
-        return imgPopular4;
-    }
-
-    public void setImgPopular4(int imgPopular4) {
-        this.imgPopular4 = imgPopular4;
-    }
-
-    public String getNameMoviePopular4() {
-        return nameMoviePopular4;
-    }
-
-    public void setNameMoviePopular4(String nameMoviePopular4) {
-        this.nameMoviePopular4 = nameMoviePopular4;
     }
 }

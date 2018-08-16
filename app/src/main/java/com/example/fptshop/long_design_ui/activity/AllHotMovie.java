@@ -18,8 +18,8 @@ public class AllHotMovie extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_hot_movie);
 
-        imgAllHotMovie = findViewById(R.id.imgAllHotMovie);
-        tvAllHotMovie = findViewById(R.id.tvAllHotMovie);
+        //imgAllHotMovie = findViewById(R.id.imgAllHotMovie);
+        //tvAllHotMovie = findViewById(R.id.tvAllHotMovie);
 
     }
 }
