@@ -7,36 +7,36 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
-import com.example.fptshop.long_design_ui.Object.ObMovieNewFeed;
+import com.example.fptshop.long_design_ui.Object.ObAllHotMovie;
 import com.example.fptshop.long_design_ui.R;
 
 import java.util.List;
 
-public class NewFeedMovieRecyclerviewAdapter extends RecyclerView.Adapter<NewFeedMovieRecyclerviewAdapter.MyViewHolder> {
-        Context mContext;
-        List<ObMovieNewFeed> mData;
+public class AllHotMovieRecyclerviewAdapter extends RecyclerView.Adapter<AllHotMovieRecyclerviewAdapter.MyViewHolder> {
+    Context mContext;
+    List<ObAllHotMovie> mData;
 
-
-    public NewFeedMovieRecyclerviewAdapter(Context mcontext, List<ObMovieNewFeed> mData) {
-        this.mContext = mcontext;
+    public AllHotMovieRecyclerviewAdapter(Context mContext, List<ObAllHotMovie> mData) {
+        this.mContext = mContext;
         this.mData = mData;
     }
-
 
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View v;
-        v = LayoutInflater.from(mContext).inflate(R.layout.item_movie_new_feed, viewGroup,false);
+        v = LayoutInflater.from(mContext).inflate(R.layout.item_all_hot_movie, viewGroup,false);
         MyViewHolder vHolder = new MyViewHolder(v);
         return vHolder;
     }
 
-
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
-        myViewHolder.imgNF1.setImageResource(mData.get(i).getImgNewFeed1());
+        myViewHolder.imgAllHotMovie1.setImageResource(mData.get(i).getImgAllHotMovie1());
+        myViewHolder.tvAllHotMovie1.setText(mData.get(i).getTvAllHotMovie1());
+
     }
 
     @Override
@@ -47,19 +47,15 @@ public class NewFeedMovieRecyclerviewAdapter extends RecyclerView.Adapter<NewFee
 
 
     public static class MyViewHolder extends RecyclerView.ViewHolder{
-        private ImageView imgNF1;
-
-
+        private ImageView imgAllHotMovie1;
+        private TextView tvAllHotMovie1;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            imgNF1 = (ImageView)itemView.findViewById(R.id.imgnf1);
+            imgAllHotMovie1 = itemView.findViewById(R.id.imgAllHotMovie1);
+            tvAllHotMovie1 = itemView.findViewById(R.id.tvAllHotMovie1);
+;
         }
 
     }
-
-
-
-
-
 
 }

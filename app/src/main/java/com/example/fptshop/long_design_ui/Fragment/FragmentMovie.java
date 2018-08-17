@@ -8,6 +8,7 @@ import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +17,6 @@ import android.view.ViewGroup;
 import com.example.fptshop.long_design_ui.Adapter.NewFeedMovieRecyclerviewAdapter;
 import com.example.fptshop.long_design_ui.Adapter.HotMovieMovieRecyclerviewAdapter;
 import com.example.fptshop.long_design_ui.Adapter.PopularMovieRecyclerviewAdapter;
-import com.example.fptshop.long_design_ui.Object.ObMovie;
 import com.example.fptshop.long_design_ui.Object.ObMovieHotMovie;
 import com.example.fptshop.long_design_ui.Object.ObMovieNewFeed;
 import com.example.fptshop.long_design_ui.Object.ObMoviePopular;
@@ -28,7 +28,6 @@ import java.util.List;
 import io.realm.Realm;
 
 public class FragmentMovie extends Fragment {
-    Realm realm;
     View v,v1;
     private RecyclerView newFeedRecyclerview;
     private RecyclerView nowRecyvlerview;
@@ -36,8 +35,6 @@ public class FragmentMovie extends Fragment {
     private List<ObMovieNewFeed> lstObMovieNewFeed;
     private List<ObMovieHotMovie> lstObMovieHotMovie;
     private List<ObMoviePopular> lstObMoviePopular;
-    private ArrayList<ObMovie> lstMovie;
-
     CollapsingToolbarLayout collapsingToolbarLayout;
     Toolbar toolbar;
 
@@ -83,8 +80,7 @@ public class FragmentMovie extends Fragment {
         popularRecyvlerview.setNestedScrollingEnabled(false);
 
         PopularMovieRecyclerviewAdapter popularAdapter = new PopularMovieRecyclerviewAdapter(getContext(), lstObMoviePopular);
-        LinearLayoutManager popularLayoutManager = new LinearLayoutManager(getActivity());
-        popularLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        StaggeredGridLayoutManager popularLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.HORIZONTAL);
         popularRecyvlerview.setLayoutManager(popularLayoutManager);
         popularRecyvlerview.setAdapter(popularAdapter);
 
@@ -133,33 +129,13 @@ public class FragmentMovie extends Fragment {
     public void popularInitData(){
         lstObMoviePopular = new ArrayList<>();
 
-        /*
-        lstMovie.add(new ObMovie(R.drawable.pp1, "Tòa tháp trọc trời"));
-        lstMovie.add(new ObMovie(R.drawable.pp2, "ET Cậu bé ngoài hành tinh"));
-        lstMovie.add(new ObMovie(R.drawable.pp3, "Trùm bài"));
-        lstMovie.add(new ObMovie(R.drawable.pp4, "Trừng phạt tội ác"));
-        lstMovie.add(new ObMovie(R.drawable.pp5, "Trả thù"));
-        lstMovie.add(new ObMovie(R.drawable.pp6, "Tiên tri ngày tận thế"));
-        lstMovie.add(new ObMovie(R.drawable.pp7, "Sát thủ thợ máy: Sự tái xuất"));
 
-        int size = lstMovie.size();
-
-        if(size % 2 ==0  ){
-            for(int i = 0; i<lstMovie.size(); i+=2){
-                lstObMoviePopular.add(new ObMoviePopular(lstMovie.get(i), lstMovie.get(i+1)));
-            }
-        }else {
-            for(int i =0;i<lstMovie.size() - 1;i+=2){
-                lstObMoviePopular.add(new ObMoviePopular(lstMovie.get(i), lstMovie.get(i+1)));
-            }
-            lstMovie.add(new ObMovie(R.drawable.imagemore, ""));
-            lstObMoviePopular.add(new ObMoviePopular(lstMovie.get(size - 2), lstMovie.get(size-1)));
-        }*/
-
-
-        lstObMoviePopular.add(new ObMoviePopular(R.drawable.pp1, "Tòa tháp trọc trời",R.drawable.pp2, "ET Cậu bé ngoài hành tinh"));
-        lstObMoviePopular.add(new ObMoviePopular(R.drawable.pp3, "Trùm bài",R.drawable.pp4, "Trừng phạt tội ác"));
-        lstObMoviePopular.add(new ObMoviePopular(R.drawable.pp5, "Trả thù",R.drawable.pp6, "Tiên tri ngày tận thế"));
+        lstObMoviePopular.add(new ObMoviePopular(R.drawable.pp1, "Tòa tháp trọc trời"));
+        lstObMoviePopular.add(new ObMoviePopular(R.drawable.pp2, "ET Cậu bé ngoài hành tinh"));
+        lstObMoviePopular.add(new ObMoviePopular(R.drawable.pp3, "Trùm bài"));
+        lstObMoviePopular.add(new ObMoviePopular(R.drawable.pp4, "Trừng phạt tội ác"));
+        lstObMoviePopular.add(new ObMoviePopular(R.drawable.pp5, "Trả thù"));
+        lstObMoviePopular.add(new ObMoviePopular(R.drawable.pp6, "Tiên tri ngày tận thế"));
 
 
 

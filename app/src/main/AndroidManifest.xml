@@ -18,6 +18,7 @@
         </activity>
         <activity android:name=".activity.SearchActivity"/>
         <activity android:name=".activity.AllHotMovie"/>
+        <activity android:name=".activity.AllTVProgram"/>
 
     </application>
 

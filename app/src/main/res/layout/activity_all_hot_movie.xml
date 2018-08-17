@@ -1,20 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal">
+    android:layout_height="match_parent"
+    android:background="@drawable/bc6"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnBackFromAllHotMovie"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/ic_back"/>
+
+        <TextView
+            android:layout_marginTop="4dp"
+            android:textColor="#ffffff"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:textSize="20dp"
+            android:layout_marginLeft="40dp"
+            android:text="Back"/>
+
+    </RelativeLayout>
 
     <LinearLayout
-        android:layout_width="200dp"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="110dp"
+            android:layout_height="20dp"
+            android:src="@drawable/line1"
+            android:layout_gravity="center"/>
+        <TextView
+            android:layout_marginLeft="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:text="Hot movie list"
+            android:textColor="#ffffff"/>
 
-        <android.support.v7.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-        </android.support.v7.widget.RecyclerView>
+        <ImageView
+            android:layout_marginLeft="5dp"
+            android:layout_width="130dp"
+            android:layout_height="20dp"
+            android:src="@drawable/line1"
+            android:layout_gravity="center"/>
 
     </LinearLayout>
 
 
-</LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_marginTop="70dp"
+        android:id="@+id/recyclerviewAllHotMovie"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </android.support.v7.widget.RecyclerView>
+
+
+</RelativeLayout>

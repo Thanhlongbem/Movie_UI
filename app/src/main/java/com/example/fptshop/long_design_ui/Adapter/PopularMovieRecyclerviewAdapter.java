@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.example.fptshop.long_design_ui.Object.ObMoviePopular;
@@ -35,7 +36,7 @@ public class PopularMovieRecyclerviewAdapter extends RecyclerView.Adapter<Popula
         View v;
 
         if (viewType == TYPE_NORMAL) {
-            v = LayoutInflater.from(mContext).inflate(R.layout.item_popular, viewGroup, false);
+            v = LayoutInflater.from(mContext).inflate(R.layout.item_movie_popular, viewGroup, false);
         } else {
             v = LayoutInflater.from(mContext).inflate(R.layout.item_more, viewGroup, false);
         }
@@ -62,8 +63,6 @@ public class PopularMovieRecyclerviewAdapter extends RecyclerView.Adapter<Popula
 
         myViewholder.imgPopular1.setImageResource(mData.get(position).getImgPopular1());
         myViewholder.tvnameMoviePopular1.setText(mData.get(position).getNameMoviePopular1());
-        myViewholder.imgPopular2.setImageResource(mData.get(position).getImgPopular2());
-        myViewholder.tvnameMoviePopular2.setText(mData.get(position).getNameMoviePopular2());
 
     }
 
@@ -71,9 +70,13 @@ public class PopularMovieRecyclerviewAdapter extends RecyclerView.Adapter<Popula
         myViewholder.view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                //Xét khi click more sẽ nhảy sang activity khác
+                //Context context = view.getContext();
+                //Intent intent = new Intent(context, AllHotMovie.class);
+                //context.startActivity(intent);
                 Context context = view.getContext();
-                Intent intent = new Intent(context, AllHotMovie.class);
-                context.startActivity(intent);
+                Toast.makeText(context, "Chưa viết activity", Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -101,8 +104,6 @@ public class PopularMovieRecyclerviewAdapter extends RecyclerView.Adapter<Popula
     public static class MyViewHolder extends RecyclerView.ViewHolder{
         private ImageView imgPopular1;
         private TextView tvnameMoviePopular1;
-        private ImageView imgPopular2;
-        private TextView tvnameMoviePopular2;
         View view;
 
 
@@ -110,8 +111,6 @@ public class PopularMovieRecyclerviewAdapter extends RecyclerView.Adapter<Popula
             super(itemView);
             imgPopular1 = itemView.findViewById(R.id.imgPopular1);
             tvnameMoviePopular1 = itemView.findViewById(R.id.nameMoviePopular1);
-            imgPopular2 = itemView.findViewById(R.id.imgPopular2);
-            tvnameMoviePopular2 = itemView.findViewById(R.id.nameMoviePopular2);
             this.view = itemView;
         }
     }

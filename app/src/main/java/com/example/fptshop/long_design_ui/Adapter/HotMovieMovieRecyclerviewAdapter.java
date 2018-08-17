@@ -34,7 +34,7 @@ public class HotMovieMovieRecyclerviewAdapter extends RecyclerView.Adapter<HotMo
         View v;
 
         if (viewType == TYPE_NORMAL) {
-            v = LayoutInflater.from(mContext).inflate(R.layout.item_hot_movie, viewGroup, false);
+            v = LayoutInflater.from(mContext).inflate(R.layout.item_movie_hot_movie, viewGroup, false);
         } else {
             v = LayoutInflater.from(mContext).inflate(R.layout.item_more, viewGroup, false);
         }
@@ -70,7 +70,7 @@ public class HotMovieMovieRecyclerviewAdapter extends RecyclerView.Adapter<HotMo
             public void onClick(View view) {
                 Context context = view.getContext();
                 Intent intent = new Intent(context, AllHotMovie.class);
-                context.startActivity(intent);
+                context.startActivities(new Intent[]{intent});
             }
         });
     }

@@ -3,7 +3,58 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#00ff77">
+    android:background="@drawable/bc6"
+    >
 
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Search TV"
+        />
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="400dp"
+        android:layout_height="180dp"
+        android:id="@+id/recyclerviewTVFirst"
+        android:background="@drawable/bc6">
+    </android.support.v7.widget.RecyclerView>
+
+    <LinearLayout
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        
+        <ImageView
+            android:layout_marginTop="5dp"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/line1"/>
+        
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="POPULAR"
+            android:textStyle="bold"
+            android:textSize="15dp"
+            android:textColor="#ffffff"
+            android:layout_marginLeft="5dp"/>
+        
+        <ImageView
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/line1"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/recyclerviewTVPopular">
+
+        </android.support.v7.widget.RecyclerView>
+        
+
+    </LinearLayout>
 
 </LinearLayout>
