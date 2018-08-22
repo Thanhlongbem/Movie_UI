@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.fptshop.long_design_ui">
-
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -19,6 +20,8 @@
         <activity android:name=".activity.SearchActivity"/>
         <activity android:name=".activity.AllHotMovie"/>
         <activity android:name=".activity.AllTVProgram"/>
+        <activity android:name=".activity.AllPopularMovie"/>
+        <activity android:name=".activity.DetailMovieActivity"/>
 
     </application>
 

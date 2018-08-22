@@ -1,21 +1,38 @@
 package com.example.fptshop.long_design_ui.Object;
 
 public class ObMovieNewFeed {
-    private int imgNewFeed1;
+    private String thumbnailUrl;
+    private String title;
+    private String subTitle;
 
-    public ObMovieNewFeed(){}
 
-    public ObMovieNewFeed(int imgNewFeed1) {
-        this.imgNewFeed1 = imgNewFeed1;
+    public ObMovieNewFeed(String thumbnailUrl, String title, String subTitle) {
+        this.thumbnailUrl = thumbnailUrl;
+        this.title = title;
+        this.subTitle = subTitle;
     }
 
-
-    public int getImgNewFeed1() {
-        return imgNewFeed1;
+    public String getThumbnailUrl() {
+        return thumbnailUrl;
     }
 
-    public void setImgNewFeed1(int imgNewFeed1) {
-        this.imgNewFeed1 = imgNewFeed1;
+    public void setThumbnailUrl(String thumbnailUrl) {
+        this.thumbnailUrl = thumbnailUrl;
     }
 
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getSubTitle() {
+        return subTitle;
+    }
+
+    public void setSubTitle(String subTitle) {
+        this.subTitle = subTitle;
+    }
 }

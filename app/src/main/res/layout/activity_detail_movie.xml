@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        
+        
+        <ImageView
+            android:src="@drawable/test_back"
+            android:id="@+id/imgDetailMovie"
+            android:layout_width="match_parent"
+            android:layout_height="300dp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnBackFromAllDetailMovie"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/ic_back"/>
+
+            <TextView
+                android:layout_marginTop="4dp"
+                android:textColor="#ffffff"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:textSize="20dp"
+                android:layout_marginLeft="40dp"
+                android:text="Back"/>
+
+            <Button
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/ic_share"
+                android:layout_marginLeft="320dp"/>
+
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/btnPlay"
+            android:layout_marginLeft="300dp"
+            android:background="@drawable/ic_play"
+            android:layout_marginTop="150dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp" />
+
+        <TextView
+            android:textColor="#FFFFFF"
+            android:text="jgkdsfgsghsfkjdghfksdghfsghfjfjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjhjgkjvjhjshfjsdhfjsdhfksdjfhslfsdjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhsssssssssssssssssssssssssssssssssssssssss"
+            android:layout_marginTop="200dp"
+            android:layout_width="match_parent"
+            android:layout_height="200dp" />
+    </FrameLayout>
+    
+    <TextView
+        android:textSize="20dp"
+        android:text="Full Cast and Crew"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="40dp" />
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="150dp">
+    </android.support.v7.widget.RecyclerView>
+
+</LinearLayout>

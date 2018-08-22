@@ -1,42 +1,71 @@
 package com.example.fptshop.long_design_ui.Fragment;
 
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
-import com.example.fptshop.long_design_ui.Adapter.NewFeedMovieRecyclerviewAdapter;
 import com.example.fptshop.long_design_ui.Adapter.HotMovieMovieRecyclerviewAdapter;
+import com.example.fptshop.long_design_ui.Adapter.NewFeedMovieRecyclerviewAdapter;
 import com.example.fptshop.long_design_ui.Adapter.PopularMovieRecyclerviewAdapter;
 import com.example.fptshop.long_design_ui.Object.ObMovieHotMovie;
 import com.example.fptshop.long_design_ui.Object.ObMovieNewFeed;
 import com.example.fptshop.long_design_ui.Object.ObMoviePopular;
+import com.example.fptshop.long_design_ui.Object.ObTrailer;
 import com.example.fptshop.long_design_ui.R;
 
+import com.google.gson.Gson;
+import com.squareup.moshi.JsonAdapter;
+import com.squareup.moshi.Moshi;
+import com.squareup.moshi.Types;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.json.JSONTokener;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.lang.reflect.Type;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-import io.realm.Realm;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+
 
 public class FragmentMovie extends Fragment {
-    View v,v1;
-    private RecyclerView newFeedRecyclerview;
-    private RecyclerView nowRecyvlerview;
+    static View v;
+
+    List<ObMovieNewFeed>  movieModelList = new ArrayList<>();
     private RecyclerView popularRecyvlerview;
-    private List<ObMovieNewFeed> lstObMovieNewFeed;
-    private List<ObMovieHotMovie> lstObMovieHotMovie;
+    List<ObMovieHotMovie> lstObMovieHotMovie = new ArrayList<>();
     private List<ObMoviePopular> lstObMoviePopular;
     CollapsingToolbarLayout collapsingToolbarLayout;
+    private ProgressDialog dialog;
     Toolbar toolbar;
+    final String BASE_URL = "http://45.76.147.88:11000/api/home/trailer";
+
 
 
     public FragmentMovie(){}
@@ -48,30 +77,26 @@ public class FragmentMovie extends Fragment {
         v = inflater.inflate(R.layout.movie_fragment,container,false);
         toolbar =  v.findViewById(R.id.toolbar);
         collapsingToolbarLayout = v.findViewById(R.id.collapsing_toolbar);
-        //Recyclerview 1----------------------------------------------------------------------------
-        newFeedRecyclerview = (RecyclerView)v.findViewById(R.id.recyclerviewNewFeed);
 
-        //Scroll View
+
+
+
+        //Trailer Recyclerview
+        final RecyclerView newFeedRecyclerview = v.findViewById(R.id.recyclerviewNewFeed);
+        NewFeedMovieRecyclerviewAdapter newFeedMovieRecyclerviewAdapter = new NewFeedMovieRecyclerviewAdapter(getContext(),movieModelList);
+        LinearLayoutManager trailerLayoutManager = new LinearLayoutManager(getActivity());
+        trailerLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         newFeedRecyclerview.setNestedScrollingEnabled(false);
-
-        NewFeedMovieRecyclerviewAdapter newFeedadapter = new NewFeedMovieRecyclerviewAdapter(getContext(),lstObMovieNewFeed);
-        LinearLayoutManager newFeedLayoutManager = new LinearLayoutManager(getActivity());
-        newFeedLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
-        newFeedRecyclerview.setLayoutManager(newFeedLayoutManager);
-        Context context = getContext();
-        newFeedRecyclerview.setAdapter(newFeedadapter);
-
+        newFeedRecyclerview.setLayoutManager(trailerLayoutManager);
+        newFeedRecyclerview.setAdapter(newFeedMovieRecyclerviewAdapter);
 
         //Recyclerview 2----------------------------------------------------------------------------
-        nowRecyvlerview = (RecyclerView)v.findViewById(R.id.recyclerviewNow);
-        //Scroll View
-        nowRecyvlerview.setNestedScrollingEnabled(false);
-
-        HotMovieMovieRecyclerviewAdapter nowAdapter = new HotMovieMovieRecyclerviewAdapter(getContext(), lstObMovieHotMovie);
-        LinearLayoutManager nowLayoutManager = new LinearLayoutManager(getActivity());
-        nowLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
-        nowRecyvlerview.setLayoutManager(nowLayoutManager);
-        nowRecyvlerview.setAdapter(nowAdapter);
+        final RecyclerView hotMovieRecyclerview = v.findViewById(R.id.recyclerviewNow);
+        hotMovieRecyclerview.setNestedScrollingEnabled(false);
+        HotMovieMovieRecyclerviewAdapter hotMovieMovieRecyclerviewAdapter = new HotMovieMovieRecyclerviewAdapter(getContext(),lstObMovieHotMovie);
+        StaggeredGridLayoutManager hotMovieLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.HORIZONTAL);
+        hotMovieRecyclerview.setLayoutManager(hotMovieLayoutManager);
+        hotMovieRecyclerview.setAdapter(hotMovieMovieRecyclerviewAdapter);
 
 
         //Recyclerview 3----------------------------------------------------------------------------
@@ -92,39 +117,191 @@ public class FragmentMovie extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        dialog = new ProgressDialog(getContext());
+        dialog.setIndeterminate(true);
+        dialog.setCancelable(false);
+        dialog.setMessage("Loading. Please wait..."); // showing a dialog for loading the data
 
-        newFeedData();
-        hotMovieInitData();
+        new TrailerJSONTask().execute("http://45.76.147.88:11000/api/home/trailer");
+
+        new HotMovieJSONTask().execute("http://45.76.147.88:11000/api/home/now");
+
         popularInitData();
 
 
     }
 
 
-    public void newFeedData(){
-        lstObMovieNewFeed = new ArrayList<>();
-        // Load from server
-        lstObMovieNewFeed.add(new ObMovieNewFeed(R.drawable.tt1));
-        lstObMovieNewFeed.add(new ObMovieNewFeed(R.drawable.tt2));
-        lstObMovieNewFeed.add(new ObMovieNewFeed(R.drawable.tt3));
-        lstObMovieNewFeed.add(new ObMovieNewFeed(R.drawable.tt5));
+
+
+
+    public class TrailerJSONTask extends AsyncTask<String, String, List<ObMovieNewFeed>> {
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            dialog.show();
+        }
+
+        @Override
+        protected List<ObMovieNewFeed> doInBackground(String... params) {
+            HttpURLConnection connection = null;
+            BufferedReader reader = null;
+
+            try {
+                URL url = new URL(params[0]);
+                connection = (HttpURLConnection) url.openConnection();
+                connection.connect();
+                InputStream stream = connection.getInputStream();
+                reader = new BufferedReader(new InputStreamReader(stream));
+                StringBuffer buffer = new StringBuffer();
+                String line ="";
+                while ((line = reader.readLine()) != null){
+                    buffer.append(line);
+                }
+                String finalJson = buffer.toString();
+
+                JSONObject parentObject = new JSONObject(finalJson);
+                JSONArray data = parentObject.getJSONArray("data");
+                int errorCode = parentObject.getInt("errorCode");
+                String message = parentObject.getString("message");
+
+
+                Gson gson = new Gson();
+                for(int i=0; i<data.length(); i++) {
+                    JSONObject finalObject = data.getJSONObject(i);
+                    /**
+                     * below single line of code from Gson saves you from writing the json parsing yourself
+                     * which is commented below
+                     */
+                    ObMovieNewFeed movieModel = gson.fromJson(finalObject.toString(), ObMovieNewFeed.class);
+                    // adding the final object in the list
+                    movieModelList.add(movieModel);
+                }
+                return movieModelList;
+
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            } finally {
+                if(connection != null) {
+                    connection.disconnect();
+                }
+                try {
+                    if(reader != null) {
+                        reader.close();
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(List<ObMovieNewFeed> obMovieNewFeeds) {
+            super.onPostExecute(obMovieNewFeeds);
+
+            dialog.dismiss();
+            if(obMovieNewFeeds != null) {
+
+            } else {
+                Toast.makeText(getContext(), "Not able to fetch data from server, please check url.", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 
-    public void hotMovieInitData(){
-        lstObMovieHotMovie = new ArrayList<>();
-        // Load from server
-        lstObMovieHotMovie.add(new ObMovieHotMovie(R.drawable.now1,"Cá mập siêu bạo chúa"));
-        lstObMovieHotMovie.add(new ObMovieHotMovie(R.drawable.now2,"Nhiệm vụ bất khả thi: Sụp đổ"));
-        lstObMovieHotMovie.add(new ObMovieHotMovie(R.drawable.now3,"Christopher Robin"));
-        lstObMovieHotMovie.add(new ObMovieHotMovie(R.drawable.now4, "Trí lực siêu phàm"));
-        lstObMovieHotMovie.add(new ObMovieHotMovie(R.drawable.now5, "Bạn trai cũ tôi là điệp viên"));
-        lstObMovieHotMovie.add(new ObMovieHotMovie(R.drawable.now6, "Mirai: Em gái đến từ tương lai"));
-        lstObMovieHotMovie.add(new ObMovieHotMovie(R.drawable.now7, "Gia đình là tất cả"));
 
-        // Add fix more item
-        lstObMovieHotMovie.add(new ObMovieHotMovie(R.drawable.imagemore, ""));
 
+
+
+    public class HotMovieJSONTask extends AsyncTask<String, String, List<ObMovieHotMovie>> {
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            dialog.show();
+        }
+
+        @Override
+        protected List<ObMovieHotMovie> doInBackground(String... params) {
+            HttpURLConnection connection = null;
+            BufferedReader reader = null;
+
+            try {
+                URL url = new URL(params[0]);
+                connection = (HttpURLConnection) url.openConnection();
+                connection.connect();
+                InputStream stream = connection.getInputStream();
+                reader = new BufferedReader(new InputStreamReader(stream));
+                StringBuffer buffer = new StringBuffer();
+                String line ="";
+                while ((line = reader.readLine()) != null){
+                    buffer.append(line);
+                }
+                String finalJson = buffer.toString();
+
+
+                JSONObject parentObject = new JSONObject(finalJson);
+                JSONArray data = parentObject.getJSONArray("data");
+
+
+
+                Gson gson = new Gson();
+                for(int i=0; i<data.length(); i++) {
+                    JSONObject finalObject = data.getJSONObject(i);
+                    /**
+                     * below single line of code from Gson saves you from writing the json parsing yourself
+                     * which is commented below
+                     */
+                    ObMovieHotMovie movieModel = gson.fromJson(finalObject.toString(), ObMovieHotMovie.class);
+                    // adding the final object in the list
+                    lstObMovieHotMovie.add(movieModel);
+                }
+                return lstObMovieHotMovie;
+
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            } finally {
+                if(connection != null) {
+                    connection.disconnect();
+                }
+                try {
+                    if(reader != null) {
+                        reader.close();
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(List<ObMovieHotMovie> obMovieHotMovie) {
+            super.onPostExecute(obMovieHotMovie);
+
+            dialog.dismiss();
+            if(obMovieHotMovie != null) {
+
+            } else {
+                Toast.makeText(getContext(), "Not able to fetch data from server, please check url.", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
+
+
+
+
+
+
+
+
 
     public void popularInitData(){
         lstObMoviePopular = new ArrayList<>();

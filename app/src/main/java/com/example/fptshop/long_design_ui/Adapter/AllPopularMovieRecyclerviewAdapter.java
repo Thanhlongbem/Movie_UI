@@ -10,17 +10,17 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.fptshop.long_design_ui.Object.ObAllHotMovie;
+import com.example.fptshop.long_design_ui.Object.ObAllPopularMovie;
 import com.example.fptshop.long_design_ui.R;
 import com.example.fptshop.long_design_ui.activity.DetailMovieActivity;
 
 import java.util.List;
 
-public class AllHotMovieRecyclerviewAdapter extends RecyclerView.Adapter<AllHotMovieRecyclerviewAdapter.MyViewHolder> {
+public class AllPopularMovieRecyclerviewAdapter extends RecyclerView.Adapter<AllPopularMovieRecyclerviewAdapter.MyViewHolder> {
     Context mContext;
-    List<ObAllHotMovie> mData;
+    List<ObAllPopularMovie> mData;
 
-    public AllHotMovieRecyclerviewAdapter(Context mContext, List<ObAllHotMovie> mData) {
+    public AllPopularMovieRecyclerviewAdapter(Context mContext, List<ObAllPopularMovie> mData) {
         this.mContext = mContext;
         this.mData = mData;
     }
@@ -29,15 +29,15 @@ public class AllHotMovieRecyclerviewAdapter extends RecyclerView.Adapter<AllHotM
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View v;
-        v = LayoutInflater.from(mContext).inflate(R.layout.item_all_hot_movie, viewGroup,false);
+        v = LayoutInflater.from(mContext).inflate(R.layout.item_all_popular_movie, viewGroup,false);
         MyViewHolder vHolder = new MyViewHolder(v);
         return vHolder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
-        myViewHolder.imgAllHotMovie1.setImageResource(mData.get(i).getImgAllHotMovie1());
-        myViewHolder.tvAllHotMovie1.setText(mData.get(i).getTvAllHotMovie1());
+        myViewHolder.imgAllPopularMovie.setImageResource(mData.get(i).getImgAllPopularMovie());
+        myViewHolder.tvAllPopularMovie.setText(mData.get(i).getTvAllPopularMovie());
 
     }
 
@@ -49,13 +49,12 @@ public class AllHotMovieRecyclerviewAdapter extends RecyclerView.Adapter<AllHotM
 
 
     public static class MyViewHolder extends RecyclerView.ViewHolder{
-        private ImageView imgAllHotMovie1;
-        private TextView tvAllHotMovie1;
+        private ImageView imgAllPopularMovie;
+        private TextView tvAllPopularMovie;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            imgAllHotMovie1 = itemView.findViewById(R.id.imgAllHotMovie1);
-            tvAllHotMovie1 = itemView.findViewById(R.id.tvAllHotMovie1);
-
+            imgAllPopularMovie = itemView.findViewById(R.id.imgAllPopularMovie);
+            tvAllPopularMovie = itemView.findViewById(R.id.tvAllPopularMovie);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -68,5 +67,4 @@ public class AllHotMovieRecyclerviewAdapter extends RecyclerView.Adapter<AllHotM
         }
 
     }
-
 }

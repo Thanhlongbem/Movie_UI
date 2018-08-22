@@ -1,30 +1,37 @@
 package com.example.fptshop.long_design_ui.Object;
 
 public class ObMovieHotMovie {
-    private int imgHotMovie;
-    private String tvHotMovie;
+    private String thumbnailUrl;
+    private String title;
+    private String subTitle;
 
-    public ObMovieHotMovie(){}
-
-
-    public ObMovieHotMovie(int imgHotMovie, String tvHotMovie) {
-        this.imgHotMovie = imgHotMovie;
-        this.tvHotMovie = tvHotMovie;
+    public ObMovieHotMovie(String thumbnailUrl, String title, String subTitle) {
+        this.thumbnailUrl = thumbnailUrl;
+        this.title = title;
+        this.subTitle = subTitle;
     }
 
-    public int getImgHotMovie() {
-        return imgHotMovie;
+    public String getThumbnailUrl() {
+        return thumbnailUrl;
     }
 
-    public void setImgHotMovie(int imgHotMovie) {
-        this.imgHotMovie = imgHotMovie;
+    public void setThumbnailUrl(String thumbnailUrl) {
+        this.thumbnailUrl = thumbnailUrl;
     }
 
-    public String getTvHotMovie() {
-        return tvHotMovie;
+    public String getTitle() {
+        return title;
     }
 
-    public void setTvHotMovie(String tvHotMovie) {
-        this.tvHotMovie = tvHotMovie;
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getSubTitle() {
+        return subTitle;
+    }
+
+    public void setSubTitle(String subTitle) {
+        this.subTitle = subTitle;
     }
 }

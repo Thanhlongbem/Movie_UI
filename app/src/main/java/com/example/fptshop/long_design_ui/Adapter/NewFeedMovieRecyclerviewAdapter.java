@@ -8,8 +8,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.example.fptshop.long_design_ui.Object.ObMovieHotMovie;
 import com.example.fptshop.long_design_ui.Object.ObMovieNewFeed;
+import com.example.fptshop.long_design_ui.Object.ObTrailer;
 import com.example.fptshop.long_design_ui.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -24,6 +27,7 @@ public class NewFeedMovieRecyclerviewAdapter extends RecyclerView.Adapter<NewFee
     }
 
 
+
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
@@ -36,7 +40,11 @@ public class NewFeedMovieRecyclerviewAdapter extends RecyclerView.Adapter<NewFee
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
-        myViewHolder.imgNF1.setImageResource(mData.get(i).getImgNewFeed1());
+        ObMovieNewFeed obMovieNewFeed = mData.get(i);
+        Picasso.with(mContext)
+                .load(mData.get(i).getThumbnailUrl())
+                .into(myViewHolder.imgnf);
+
     }
 
     @Override
@@ -47,12 +55,14 @@ public class NewFeedMovieRecyclerviewAdapter extends RecyclerView.Adapter<NewFee
 
 
     public static class MyViewHolder extends RecyclerView.ViewHolder{
-        private ImageView imgNF1;
+        private ImageView imgnf;
 
 
+        View v;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            imgNF1 = (ImageView)itemView.findViewById(R.id.imgnf1);
+
+            imgnf = (ImageView)itemView.findViewById(R.id.imgnf1);
         }
 
     }

@@ -15,6 +15,8 @@ import android.widget.Toast;
 import com.example.fptshop.long_design_ui.Object.ObMoviePopular;
 import com.example.fptshop.long_design_ui.R;
 import com.example.fptshop.long_design_ui.activity.AllHotMovie;
+import com.example.fptshop.long_design_ui.activity.AllPopularMovie;
+import com.example.fptshop.long_design_ui.activity.DetailMovieActivity;
 
 import java.util.List;
 
@@ -64,6 +66,16 @@ public class PopularMovieRecyclerviewAdapter extends RecyclerView.Adapter<Popula
         myViewholder.imgPopular1.setImageResource(mData.get(position).getImgPopular1());
         myViewholder.tvnameMoviePopular1.setText(mData.get(position).getNameMoviePopular1());
 
+        myViewholder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Context context = view.getContext();
+                Intent intent = new Intent(context, DetailMovieActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivities(new Intent[]{intent});
+            }
+        });
+
     }
 
     public void layoutMoreItem(@NonNull PopularMovieRecyclerviewAdapter.MyViewHolder myViewholder, int position) {
@@ -72,11 +84,10 @@ public class PopularMovieRecyclerviewAdapter extends RecyclerView.Adapter<Popula
             public void onClick(View view) {
 
                 //Xét khi click more sẽ nhảy sang activity khác
-                //Context context = view.getContext();
-                //Intent intent = new Intent(context, AllHotMovie.class);
-                //context.startActivity(intent);
                 Context context = view.getContext();
-                Toast.makeText(context, "Chưa viết activity", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(context, AllPopularMovie.class);
+                context.startActivity(intent);
+
             }
         });
     }

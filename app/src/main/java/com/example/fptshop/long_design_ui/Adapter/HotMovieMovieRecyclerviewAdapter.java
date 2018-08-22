@@ -2,6 +2,11 @@ package com.example.fptshop.long_design_ui.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -13,12 +18,16 @@ import android.widget.TextView;
 import com.example.fptshop.long_design_ui.R;
 import com.example.fptshop.long_design_ui.activity.AllHotMovie;
 import com.example.fptshop.long_design_ui.Object.ObMovieHotMovie;
+import com.example.fptshop.long_design_ui.activity.DetailMovieActivity;
+import com.squareup.picasso.Picasso;
 
+import java.io.ByteArrayOutputStream;
 import java.util.List;
 
 public class HotMovieMovieRecyclerviewAdapter extends RecyclerView.Adapter<HotMovieMovieRecyclerviewAdapter.MyViewHolder>{
     Context mContext;
     List<ObMovieHotMovie> mData;
+
 
     public static int TYPE_NORMAL = 0;
     public static int TYPE_MORE = 1;
@@ -57,11 +66,23 @@ public class HotMovieMovieRecyclerviewAdapter extends RecyclerView.Adapter<HotMo
 
     }
 
-    public void layoutNormalItem(@NonNull HotMovieMovieRecyclerviewAdapter.MyViewHolder myViewholder, int position) {
+    public void layoutNormalItem(@NonNull MyViewHolder myViewholder, int position) {
         final ObMovieHotMovie obMovieHotMovie = mData.get(position);
+        myViewholder.tvHotMovie.setText(mData.get(position).getTitle());
 
-        myViewholder.imgHotMovie.setImageResource(mData.get(position).getImgHotMovie());
-        myViewholder.tvHotMovie.setText(mData.get(position).getTvHotMovie());
+        Picasso.with(mContext)
+                .load(mData.get(position).getThumbnailUrl())
+                .into(myViewholder.imgHotMovie);
+
+        myViewholder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Context context = view.getContext();
+                Intent intent = new Intent(context, DetailMovieActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivities(new Intent[]{intent});
+            }
+        });
     }
 
     public void layoutMoreItem(@NonNull HotMovieMovieRecyclerviewAdapter.MyViewHolder myViewholder, int position) {
@@ -97,6 +118,7 @@ public class HotMovieMovieRecyclerviewAdapter extends RecyclerView.Adapter<HotMo
 
         public MyViewHolder(@NonNull final View itemView) {
             super(itemView);
+            //view = itemView;
             imgHotMovie = itemView.findViewById(R.id.imgHotMovie);
             tvHotMovie = itemView.findViewById(R.id.tvHotMovie);
             this.view = itemView;
