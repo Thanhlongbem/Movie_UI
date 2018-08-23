@@ -1,5 +1,6 @@
 package com.example.fptshop.long_design_ui.Adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -27,6 +28,11 @@ import java.util.List;
 public class HotMovieMovieRecyclerviewAdapter extends RecyclerView.Adapter<HotMovieMovieRecyclerviewAdapter.MyViewHolder>{
     Context mContext;
     List<ObMovieHotMovie> mData;
+    public static final String IMAGE = "image";
+    public static final String NAME = "name";
+    public static final String SOURCE = "source";
+
+
 
 
     public static int TYPE_NORMAL = 0;
@@ -66,9 +72,10 @@ public class HotMovieMovieRecyclerviewAdapter extends RecyclerView.Adapter<HotMo
 
     }
 
-    public void layoutNormalItem(@NonNull MyViewHolder myViewholder, int position) {
+    public void layoutNormalItem(@NonNull final MyViewHolder myViewholder, final int position) {
         final ObMovieHotMovie obMovieHotMovie = mData.get(position);
         myViewholder.tvHotMovie.setText(mData.get(position).getTitle());
+
 
         Picasso.with(mContext)
                 .load(mData.get(position).getThumbnailUrl())
@@ -79,6 +86,9 @@ public class HotMovieMovieRecyclerviewAdapter extends RecyclerView.Adapter<HotMo
             public void onClick(View view) {
                 Context context = view.getContext();
                 Intent intent = new Intent(context, DetailMovieActivity.class);
+                intent.putExtra("IMAGE",mData.get(position).getThumbnailUrl());
+                intent.putExtra("NAME", mData.get(position).getTitle());
+                intent.putExtra(SOURCE, "HotMovie");
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivities(new Intent[]{intent});
             }
@@ -116,6 +126,7 @@ public class HotMovieMovieRecyclerviewAdapter extends RecyclerView.Adapter<HotMo
 
         View view;
 
+
         public MyViewHolder(@NonNull final View itemView) {
             super(itemView);
             //view = itemView;
@@ -123,6 +134,11 @@ public class HotMovieMovieRecyclerviewAdapter extends RecyclerView.Adapter<HotMo
             tvHotMovie = itemView.findViewById(R.id.tvHotMovie);
             this.view = itemView;
 
+
         }
     }
+
+
+
+
 }

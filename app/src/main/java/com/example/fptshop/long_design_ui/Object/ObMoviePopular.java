@@ -1,31 +1,38 @@
 package com.example.fptshop.long_design_ui.Object;
 
 public class ObMoviePopular {
-    private int imgPopular1;
-    private String nameMoviePopular1;
+    private String thumbnailUrl;
+    private String title;
+    private String subTitle;
 
 
-    public ObMoviePopular(int imgPopular1, String nameMoviePopular1) {
-        this.imgPopular1 = imgPopular1;
-        this.nameMoviePopular1 = nameMoviePopular1;
+    public ObMoviePopular(String thumbnailUrl, String title, String subTitle) {
+        this.thumbnailUrl = thumbnailUrl;
+        this.title = title;
+        this.subTitle = subTitle;
     }
 
-
-
-    public int getImgPopular1() {
-        return imgPopular1;
+    public String getThumbnailUrl() {
+        return thumbnailUrl;
     }
 
-    public void setImgPopular1(int imgPopular1) {
-        this.imgPopular1 = imgPopular1;
+    public void setThumbnailUrl(String thumbnailUrl) {
+        this.thumbnailUrl = thumbnailUrl;
     }
 
-    public String getNameMoviePopular1() {
-        return nameMoviePopular1;
+    public String getTitle() {
+        return title;
     }
 
-    public void setNameMoviePopular1(String nameMoviePopular1) {
-        this.nameMoviePopular1 = nameMoviePopular1;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
+    public String getSubTitle() {
+        return subTitle;
+    }
+
+    public void setSubTitle(String subTitle) {
+        this.subTitle = subTitle;
+    }
 }

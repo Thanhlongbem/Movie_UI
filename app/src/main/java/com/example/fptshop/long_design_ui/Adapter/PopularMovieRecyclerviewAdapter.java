@@ -17,6 +17,7 @@ import com.example.fptshop.long_design_ui.R;
 import com.example.fptshop.long_design_ui.activity.AllHotMovie;
 import com.example.fptshop.long_design_ui.activity.AllPopularMovie;
 import com.example.fptshop.long_design_ui.activity.DetailMovieActivity;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -62,9 +63,11 @@ public class PopularMovieRecyclerviewAdapter extends RecyclerView.Adapter<Popula
 
     public void layoutNormalItem(@NonNull PopularMovieRecyclerviewAdapter.MyViewHolder myViewholder, int position) {
         final ObMoviePopular obMoviePopular = mData.get(position);
+        myViewholder.tvnameMoviePopular1.setText(mData.get(position).getTitle());
 
-        myViewholder.imgPopular1.setImageResource(mData.get(position).getImgPopular1());
-        myViewholder.tvnameMoviePopular1.setText(mData.get(position).getNameMoviePopular1());
+        Picasso.with(mContext)
+                .load(mData.get(position).getThumbnailUrl())
+                .into(myViewholder.imgPopular1);
 
         myViewholder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.example.fptshop.long_design_ui.Object.ObAllHotMovie;
 import com.example.fptshop.long_design_ui.R;
 import com.example.fptshop.long_design_ui.activity.DetailMovieActivity;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -36,8 +37,23 @@ public class AllHotMovieRecyclerviewAdapter extends RecyclerView.Adapter<AllHotM
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
-        myViewHolder.imgAllHotMovie1.setImageResource(mData.get(i).getImgAllHotMovie1());
-        myViewHolder.tvAllHotMovie1.setText(mData.get(i).getTvAllHotMovie1());
+        final ObAllHotMovie obAllHotMovie = mData.get(i);
+        myViewHolder.tvAllHotMovie1.setText(mData.get(i).getTitle());
+
+        Picasso.with(mContext)
+                .load(mData.get(i).getThumbnailUrl())
+                .into(myViewHolder.imgAllHotMovie1);
+
+        myViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Context context = view.getContext();
+                Intent intent = new Intent(context, DetailMovieActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivities(new Intent[]{intent});
+            }
+        });
+
 
     }
 
