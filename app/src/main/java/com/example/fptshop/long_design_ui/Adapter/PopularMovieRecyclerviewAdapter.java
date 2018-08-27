@@ -61,7 +61,7 @@ public class PopularMovieRecyclerviewAdapter extends RecyclerView.Adapter<Popula
 
     }
 
-    public void layoutNormalItem(@NonNull PopularMovieRecyclerviewAdapter.MyViewHolder myViewholder, int position) {
+    public void layoutNormalItem(@NonNull PopularMovieRecyclerviewAdapter.MyViewHolder myViewholder, final int position) {
         final ObMoviePopular obMoviePopular = mData.get(position);
         myViewholder.tvnameMoviePopular1.setText(mData.get(position).getTitle());
 
@@ -74,6 +74,8 @@ public class PopularMovieRecyclerviewAdapter extends RecyclerView.Adapter<Popula
             public void onClick(View view) {
                 Context context = view.getContext();
                 Intent intent = new Intent(context, DetailMovieActivity.class);
+                intent.putExtra("IMAGE",mData.get(position).getThumbnailUrl());
+                intent.putExtra("NAME", mData.get(position).getTitle());
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivities(new Intent[]{intent});
             }

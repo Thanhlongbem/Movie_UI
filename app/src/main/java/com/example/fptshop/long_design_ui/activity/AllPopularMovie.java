@@ -45,13 +45,7 @@ public class AllPopularMovie extends AppCompatActivity {
         recyclerviewAllPopularMovie.setItemAnimator(new DefaultItemAnimator());
         ArrayList<ObAllPopularMovie> arrayList = new ArrayList<>();
 
-        //ADD dữ liệu
-        arrayList.add(new ObAllPopularMovie(R.drawable.pp1, "Tòa tháp trọc trời"));
-        arrayList.add(new ObAllPopularMovie(R.drawable.pp2, "ET Cậu bé ngoài \nhành tinh"));
-        arrayList.add(new ObAllPopularMovie(R.drawable.pp3, "Trùm bài"));
-        arrayList.add(new ObAllPopularMovie(R.drawable.pp4, "Trừng phạt tội ác"));
-        arrayList.add(new ObAllPopularMovie(R.drawable.pp5, "Trả thù"));
-        arrayList.add(new ObAllPopularMovie(R.drawable.pp6, "Tiên tri ngày tận thế"));
+
 
 
 

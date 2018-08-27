@@ -34,7 +34,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <ImageView
-            android:layout_width="110dp"
+            android:layout_width="100dp"
             android:layout_height="20dp"
             android:src="@drawable/line1"
             android:layout_gravity="center"/>
@@ -44,7 +44,7 @@
             android:layout_height="wrap_content"
             android:textSize="20dp"
             android:textStyle="bold"
-            android:text="Hot movie list"
+            android:text="Popular movie list"
             android:textColor="#ffffff"/>
 
         <ImageView

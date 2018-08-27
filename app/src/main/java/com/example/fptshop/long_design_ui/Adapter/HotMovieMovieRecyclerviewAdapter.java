@@ -28,10 +28,6 @@ import java.util.List;
 public class HotMovieMovieRecyclerviewAdapter extends RecyclerView.Adapter<HotMovieMovieRecyclerviewAdapter.MyViewHolder>{
     Context mContext;
     List<ObMovieHotMovie> mData;
-    public static final String IMAGE = "image";
-    public static final String NAME = "name";
-    public static final String SOURCE = "source";
-
 
 
 
@@ -88,7 +84,6 @@ public class HotMovieMovieRecyclerviewAdapter extends RecyclerView.Adapter<HotMo
                 Intent intent = new Intent(context, DetailMovieActivity.class);
                 intent.putExtra("IMAGE",mData.get(position).getThumbnailUrl());
                 intent.putExtra("NAME", mData.get(position).getTitle());
-                intent.putExtra(SOURCE, "HotMovie");
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivities(new Intent[]{intent});
             }
