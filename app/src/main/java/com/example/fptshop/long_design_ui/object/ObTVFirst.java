@@ -1,6 +1,4 @@
-package com.example.fptshop.long_design_ui.Object;
-
-import android.widget.ImageView;
+package com.example.fptshop.long_design_ui.object;
 
 public class ObTVFirst {
     private int imgTVFirst;

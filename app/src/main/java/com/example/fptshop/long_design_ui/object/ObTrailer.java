@@ -1,4 +1,4 @@
-package com.example.fptshop.long_design_ui.Object;
+package com.example.fptshop.long_design_ui.object;
 
 import java.util.List;
 

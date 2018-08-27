@@ -15,6 +15,7 @@ import android.widget.ImageView;
 
 import com.example.fptshop.long_design_ui.R;
 
+
 public class SearchActivity extends AppCompatActivity {
 
     private static final String TAG = "SearchActivity";

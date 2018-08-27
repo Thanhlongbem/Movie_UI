@@ -9,8 +9,8 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.fptshop.long_design_ui.Adapter.AllPopularMovieRecyclerviewAdapter;
-import com.example.fptshop.long_design_ui.Object.ObAllPopularMovie;
+import com.example.fptshop.long_design_ui.adapter.AllPopularMovieRecyclerviewAdapter;
+import com.example.fptshop.long_design_ui.object.ObAllPopularMovie;
 import com.example.fptshop.long_design_ui.R;
 
 import java.util.ArrayList;

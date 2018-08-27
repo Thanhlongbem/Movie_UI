@@ -1,11 +1,12 @@
-package com.example.fptshop.long_design_ui.Object;
+package com.example.fptshop.long_design_ui.object;
 
-public class ObAllHotMovie {
+public class ObMovieNewFeed {
     private String thumbnailUrl;
     private String title;
     private String subTitle;
 
-    public ObAllHotMovie(String thumbnailUrl, String title, String subTitle) {
+
+    public ObMovieNewFeed(String thumbnailUrl, String title, String subTitle) {
         this.thumbnailUrl = thumbnailUrl;
         this.title = title;
         this.subTitle = subTitle;

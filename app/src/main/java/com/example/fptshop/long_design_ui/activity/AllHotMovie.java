@@ -6,19 +6,14 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.fptshop.long_design_ui.Adapter.AllHotMovieRecyclerviewAdapter;
-import com.example.fptshop.long_design_ui.Object.ObAllHotMovie;
-import com.example.fptshop.long_design_ui.Object.ObMovieHotMovie;
+import com.example.fptshop.long_design_ui.adapter.AllHotMovieRecyclerviewAdapter;
+import com.example.fptshop.long_design_ui.object.ObAllHotMovie;
 import com.example.fptshop.long_design_ui.R;
 import com.google.gson.Gson;
 

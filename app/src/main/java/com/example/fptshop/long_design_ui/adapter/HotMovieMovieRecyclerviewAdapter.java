@@ -1,4 +1,4 @@
-package com.example.fptshop.long_design_ui.Adapter;
+package com.example.fptshop.long_design_ui.adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,49 +9,47 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-
-import com.example.fptshop.long_design_ui.Object.ObMoviePopular;
 import com.example.fptshop.long_design_ui.R;
 import com.example.fptshop.long_design_ui.activity.AllHotMovie;
-import com.example.fptshop.long_design_ui.activity.AllPopularMovie;
+import com.example.fptshop.long_design_ui.object.ObMovieHotMovie;
 import com.example.fptshop.long_design_ui.activity.DetailMovieActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class PopularMovieRecyclerviewAdapter extends RecyclerView.Adapter<PopularMovieRecyclerviewAdapter.MyViewHolder> {
+public class HotMovieMovieRecyclerviewAdapter extends RecyclerView.Adapter<HotMovieMovieRecyclerviewAdapter.MyViewHolder>{
     Context mContext;
-    List<ObMoviePopular> mData;
+    List<ObMovieHotMovie> mData;
 
     public static int TYPE_NORMAL = 0;
     public static int TYPE_MORE = 1;
 
-    public PopularMovieRecyclerviewAdapter(Context mContext, List<ObMoviePopular> mData) {
+    public HotMovieMovieRecyclerviewAdapter(Context mContext, List<ObMovieHotMovie> mData) {
         this.mContext = mContext;
         this.mData = mData;
     }
 
     @NonNull
     @Override
-    public PopularMovieRecyclerviewAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
+    public HotMovieMovieRecyclerviewAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
         View v;
 
         if (viewType == TYPE_NORMAL) {
-            v = LayoutInflater.from(mContext).inflate(R.layout.item_movie_popular, viewGroup, false);
+            v = LayoutInflater.from(mContext).inflate(R.layout.item_movie_hot_movie, viewGroup, false);
         } else {
             v = LayoutInflater.from(mContext).inflate(R.layout.item_more, viewGroup, false);
         }
 
-        PopularMovieRecyclerviewAdapter.MyViewHolder vHolder = new PopularMovieRecyclerviewAdapter.MyViewHolder(v);
+
+
+        HotMovieMovieRecyclerviewAdapter.MyViewHolder vHolder = new HotMovieMovieRecyclerviewAdapter.MyViewHolder(v);
         return vHolder;
     }
 
 
-
     @Override
-    public void onBindViewHolder(@NonNull PopularMovieRecyclerviewAdapter.MyViewHolder myViewholder, int position) {
+    public void onBindViewHolder(@NonNull HotMovieMovieRecyclerviewAdapter.MyViewHolder myViewholder, int position) {
         if (myViewholder.getItemViewType() == TYPE_NORMAL) {
             layoutNormalItem(myViewholder, position);
         } else {
@@ -61,13 +59,14 @@ public class PopularMovieRecyclerviewAdapter extends RecyclerView.Adapter<Popula
 
     }
 
-    public void layoutNormalItem(@NonNull PopularMovieRecyclerviewAdapter.MyViewHolder myViewholder, final int position) {
-        final ObMoviePopular obMoviePopular = mData.get(position);
-        myViewholder.tvnameMoviePopular1.setText(mData.get(position).getTitle());
+    public void layoutNormalItem(@NonNull final MyViewHolder myViewholder, final int position) {
+        final ObMovieHotMovie obMovieHotMovie = mData.get(position);
+        myViewholder.tvHotMovie.setText(mData.get(position).getTitle());
+
 
         Picasso.with(mContext)
                 .load(mData.get(position).getThumbnailUrl())
-                .into(myViewholder.imgPopular1);
+                .into(myViewholder.imgHotMovie);
 
         myViewholder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,19 +79,15 @@ public class PopularMovieRecyclerviewAdapter extends RecyclerView.Adapter<Popula
                 context.startActivities(new Intent[]{intent});
             }
         });
-
     }
 
-    public void layoutMoreItem(@NonNull PopularMovieRecyclerviewAdapter.MyViewHolder myViewholder, int position) {
+    public void layoutMoreItem(@NonNull HotMovieMovieRecyclerviewAdapter.MyViewHolder myViewholder, int position) {
         myViewholder.view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                //Xét khi click more sẽ nhảy sang activity khác
                 Context context = view.getContext();
-                Intent intent = new Intent(context, AllPopularMovie.class);
-                context.startActivity(intent);
-
+                Intent intent = new Intent(context, AllHotMovie.class);
+                context.startActivities(new Intent[]{intent});
             }
         });
     }
@@ -106,30 +101,30 @@ public class PopularMovieRecyclerviewAdapter extends RecyclerView.Adapter<Popula
         }
     }
 
-
-
-
-
-
-
     @Override
     public int getItemCount() {
         return mData.size();
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder{
-        private ImageView imgPopular1;
-        private TextView tvnameMoviePopular1;
+        private ImageView imgHotMovie;
+        private TextView tvHotMovie;
+
         View view;
 
 
-        public MyViewHolder(@NonNull View itemView) {
+        public MyViewHolder(@NonNull final View itemView) {
             super(itemView);
-            imgPopular1 = itemView.findViewById(R.id.imgPopular1);
-            tvnameMoviePopular1 = itemView.findViewById(R.id.nameMoviePopular1);
+            //view = itemView;
+            imgHotMovie = itemView.findViewById(R.id.imgHotMovie);
+            tvHotMovie = itemView.findViewById(R.id.tvHotMovie);
             this.view = itemView;
+
+
         }
     }
+
+
 
 
 }

@@ -1,4 +1,4 @@
-package com.example.fptshop.long_design_ui.Adapter;
+package com.example.fptshop.long_design_ui.adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.fptshop.long_design_ui.Object.ObTVFirst;
+import com.example.fptshop.long_design_ui.object.ObTVFirst;
 import com.example.fptshop.long_design_ui.R;
 import com.example.fptshop.long_design_ui.activity.AllTVProgram;
 

@@ -1,4 +1,4 @@
-package com.example.fptshop.long_design_ui.Fragment;
+package com.example.fptshop.long_design_ui.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -9,10 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.fptshop.long_design_ui.Adapter.TVFirstRecyclerviewAdapter;
-import com.example.fptshop.long_design_ui.Object.ObTVFirst;
+import com.example.fptshop.long_design_ui.adapter.TVFirstRecyclerviewAdapter;
+import com.example.fptshop.long_design_ui.object.ObTVFirst;
 import com.example.fptshop.long_design_ui.R;
-import com.example.fptshop.long_design_ui.activity.AllTVProgram;
 
 import java.util.List;
 

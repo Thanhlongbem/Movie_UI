@@ -1,4 +1,4 @@
-package com.example.fptshop.long_design_ui.Adapter;
+package com.example.fptshop.long_design_ui.adapter;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -7,36 +7,42 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 
-import com.example.fptshop.long_design_ui.Object.ObCast;
+import com.example.fptshop.long_design_ui.object.ObMovieNewFeed;
 import com.example.fptshop.long_design_ui.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class CastMovieAdapter extends RecyclerView.Adapter<CastMovieAdapter.MyViewHolder> {
-    Context mContext;
-    List<ObCast> mData;
+public class NewFeedMovieRecyclerviewAdapter extends RecyclerView.Adapter<NewFeedMovieRecyclerviewAdapter.MyViewHolder> {
+        Context mContext;
+        List<ObMovieNewFeed> mData;
 
 
-    public CastMovieAdapter(Context mContext, List<ObCast> mData) {
-        this.mContext = mContext;
+    public NewFeedMovieRecyclerviewAdapter(Context mcontext, List<ObMovieNewFeed> mData) {
+        this.mContext = mcontext;
         this.mData = mData;
     }
+
+
 
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View v;
-        v = LayoutInflater.from(mContext).inflate(R.layout.item_cast, viewGroup,false);
+        v = LayoutInflater.from(mContext).inflate(R.layout.item_movie_new_feed, viewGroup,false);
         MyViewHolder vHolder = new MyViewHolder(v);
         return vHolder;
     }
 
+
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
-        myViewHolder.tvNameCast.setText(mData.get(i).getNameCast());
-        myViewHolder.imgCast.setImageResource(mData.get(i).getImageCast());
+        ObMovieNewFeed obMovieNewFeed = mData.get(i);
+        Picasso.with(mContext)
+                .load(mData.get(i).getThumbnailUrl())
+                .into(myViewHolder.imgnf);
+
     }
 
     @Override
@@ -45,16 +51,23 @@ public class CastMovieAdapter extends RecyclerView.Adapter<CastMovieAdapter.MyVi
     }
 
 
+
     public static class MyViewHolder extends RecyclerView.ViewHolder{
-        private ImageView imgCast;
-        private TextView tvNameCast;
+        private ImageView imgnf;
 
 
+        View v;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            imgCast = itemView.findViewById(R.id.imgCast);
-            tvNameCast = itemView.findViewById(R.id.tvNameCast);
+            imgnf = (ImageView)itemView.findViewById(R.id.imgnf1);
         }
+
     }
+
+
+
+
+
+
 }

@@ -11,8 +11,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.fptshop.long_design_ui.Adapter.CastMovieAdapter;
-import com.example.fptshop.long_design_ui.Object.ObCast;
+import com.example.fptshop.long_design_ui.adapter.CastMovieAdapter;
+import com.example.fptshop.long_design_ui.object.ObCast;
 import com.example.fptshop.long_design_ui.R;
 import com.squareup.picasso.Picasso;
 

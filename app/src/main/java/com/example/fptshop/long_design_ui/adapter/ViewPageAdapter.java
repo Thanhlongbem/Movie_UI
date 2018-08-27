@@ -1,4 +1,4 @@
-package com.example.fptshop.long_design_ui.Adapter;
+package com.example.fptshop.long_design_ui.adapter;
 
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -34,7 +34,7 @@ public class ViewPageAdapter extends FragmentPagerAdapter {
     }
 
 
-    public void AddFragment(Fragment fragment, String title) {
+    public void addFragment(Fragment fragment, String title) {
 
         lstFragment.add(fragment);
         lstTitle.add(title);
