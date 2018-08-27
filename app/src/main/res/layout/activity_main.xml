@@ -1,75 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    >
     <android.support.design.widget.AppBarLayout
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        android:layout_height="50dp"
         android:fitsSystemWindows="true"
-        android:layout_height="50dp">
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
         <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/collapsing_toolbar"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed"
-            app:contentScrim="?attr/colorPrimary"
-            app:expandedTitleMarginStart="48dp"
-            app:expandedTitleMarginEnd="64dp"
             android:fitsSystemWindows="true"
-            >
+            app:contentScrim="?attr/colorPrimary"
+            app:expandedTitleMarginEnd="64dp"
+            app:expandedTitleMarginStart="48dp"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
+                android:background="@color/colorPrimary"
                 app:layout_collapseMode="pin"
-                android:background="@drawable/bc6">
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:orientation="horizontal"
-                    app:layout_collapseMode="parallax"
-                    >
-                    <EditText
-                        android:layout_marginLeft="5dp"
-                        android:id="@+id/edtSearchActivity"
-                        android:layout_width="340dp"
-                        android:layout_height="wrap_content"
-                        android:hint="Search movie"
-                        android:textSize="20dp"
-                        />
+                    app:layout_collapseMode="parallax">
 
+                    <!--<EditText-->
+                        <!--android:id="@+id/edtSearchActivity"-->
+                        <!--android:layout_width="0dp"-->
+                        <!--android:layout_weight="1"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_marginLeft="5dp"-->
+                        <!--android:hint="@string/home_hint_search_movie"-->
+                        <!--android:textSize="20sp" />-->
+
+                    <TextView
+                        android:id="@+id/tvSearchActivity"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="@string/home_hint_search_movie"
+                        android:textColor="@drawable/textview_white_state"
+                        android:gravity="center_vertical" />
+
+                    <ImageView
+                        android:layout_width="@dimen/icon_size_small"
+                        android:layout_height="@dimen/icon_size_small"
+                        android:src="@drawable/ic_search_black_48"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="@dimen/icon_margin_small"
+                        android:layout_marginRight="@dimen/icon_margin_small"
+                        android:tint="@android:color/white"/>
                 </LinearLayout>
             </android.support.v7.widget.Toolbar>
 
         </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>
+
     <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager_id"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        android:id="@+id/viewpager_id">
-    </android.support.v4.view.ViewPager>
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
     <android.support.design.widget.TabLayout
-        app:tabTextAppearance="@style/MineCustomTabText"
-        app:tabTextColor="#000000"
+        android:id="@+id/tablayout_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:tabMode="fixed"
-        app:tabGravity="fill"
-        app:tabIndicatorColor= "@color/colorAccent"
         android:layout_gravity="bottom"
-        android:id="@+id/tablayout_id"
-        app:tabBackground="@drawable/line2">
-    </android.support.design.widget.TabLayout>
+        app:tabBackground="@drawable/line2"
+        app:tabGravity="fill"
+        app:tabIndicatorColor="@color/colorAccent"
+        app:tabMode="fixed"
+        app:tabTextAppearance="@style/MineCustomTabText"
+        app:tabTextColor="#000000"/>
 </android.support.design.widget.CoordinatorLayout>
 
 

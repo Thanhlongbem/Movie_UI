@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Long_Design_UI</string>
+
+    <string name="home_hint_search_movie">Search movie...</string>
 </resources>

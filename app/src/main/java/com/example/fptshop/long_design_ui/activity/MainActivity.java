@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.example.fptshop.long_design_ui.Adapter.ViewPageAdapter;
 import com.example.fptshop.long_design_ui.Fragment.FragmentMovie;
@@ -21,12 +22,9 @@ public class MainActivity extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private ViewPageAdapter adapter;
-    EditText edtSearchActivity;
+    TextView tvSearchActivity;
     Intent intent;
     AppBarLayout appBarLayout;
-
-
-
 
 
     @Override
@@ -57,9 +55,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void searchClick(){
-        edtSearchActivity = findViewById(R.id.edtSearchActivity);
-
-        edtSearchActivity.setOnClickListener(new View.OnClickListener() {
+        tvSearchActivity = findViewById(R.id.tvSearchActivity);
+        tvSearchActivity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 intent = new Intent(MainActivity.this, SearchActivity.class);
